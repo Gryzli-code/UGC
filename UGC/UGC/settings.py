@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-6kfbx(ms5qg^del_5lwh++sc5$7*+*yhy-lr@1(9t3(ay5%vba
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.1,web,db').split(',')
 
 # Application definition
 
@@ -63,11 +63,11 @@ WSGI_APPLICATION = "UGC.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "NAME": os.getenv("DB_NAME", "ugc_db"),
+        "USER": os.getenv("DB_USER", "ugc_user"),
+        "PASSWORD": os.getenv("DB_PASSWORD", "ugc_password"),
+        "HOST": os.getenv("DB_HOST", "db"),
+        "PORT": os.getenv("DB_PORT", "5432"),
     }
 }
 
@@ -95,7 +95,6 @@ AUTH_USER_MODEL = "user.CustomUser"
 LOGIN_URL = '/login/'
 # Можно настроить опционально, например, в личный кабинет или сразу к выбору опроса и тд.
 LOGIN_REDIRECT_URL = '/'
-
 
 # Internationalization
 LANGUAGE_CODE = 'ru'
