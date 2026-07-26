@@ -19,6 +19,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "user",
     "main",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -88,7 +89,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Модель для авторизации и регистрации
-AUTH_USER_MODEL = "main.CustomUser"
+AUTH_USER_MODEL = "user.CustomUser"
 
 # Internationalization
 

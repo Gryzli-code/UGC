@@ -2,7 +2,8 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from faker import Faker
 
-from ...models import CustomUser, Survey, Question, Answer
+from ...models import Survey, Question, Answer
+from user.models import CustomUser
 
 
 class Command(BaseCommand):
