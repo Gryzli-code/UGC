@@ -1,12 +1,15 @@
 from django.core.management.base import BaseCommand
-from django.db import transaction
 from faker import Faker
 
-from ...models import Survey, Question, Answer
+from main.models import Survey, Question, Answer
 from user.models import CustomUser
 
 
 class Command(BaseCommand):
+    """
+    Функция для генерации данных для проверки работы эндпоинта
+    """
+
     def handle(self, *args, **kwargs):
         fake = Faker('ru_RU')
 
