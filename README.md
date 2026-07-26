@@ -11,8 +11,9 @@ UGC - это сервис для создания опросов для друг
 ### Требования
 - Python 3.11+
 - poetry
+- Docker
 
-### Установка и запуск приложения
+### Установка и запуск приложения без использования Docker
 
 1. Клонируйте репозиторий:
 ```bash
@@ -43,6 +44,37 @@ poetry run python manage.py generate_data
 7. Запустите сервер:
 ```bash
 poetry run python manage.py runserver
+```
+
+Откройте http://localhost:8000 в браузере.
+
+
+### Установка и запуск приложения c использования Docker
+
+1. Клонируйте репозиторий:
+```bash
+git clone https://github.com/your-username/ugc.git
+cd UGC
+```
+
+2. Соберите образ командой:
+```bash
+docker-compose build --no-cache
+```
+
+3. Запустите контейнер
+```bash
+docker-compose up -d
+```
+
+4. Создайте суперпользователя командой:
+```bash
+docker-compose exec web python manage.py createsuperuser
+```
+
+5. Сгенерируйте тестовые данные с помощью команды:
+```bash
+docker-compose exec web python manage.py generate_data
 ```
 
 Откройте http://localhost:8000 в браузере.
