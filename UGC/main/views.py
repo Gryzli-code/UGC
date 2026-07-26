@@ -7,6 +7,13 @@ from .models import Survey, Question, Answer
 
 
 def get_question(request, id_survey, num_question):
+    """
+    Функция получения вопроса из опроса
+    :param request: HttpRequest объект
+    :param id_survey: ID опроса
+    :param num_question:  Последовательный номер вопроса
+    :return: шаблон survey/question.html с данными вопроса и отсортирванными ответам
+    """
     survey_db = get_object_or_404(Survey, id=id_survey)
     question = Question.objects.prefetch_related(
         Prefetch("answers", queryset=Answer.objects.order_by('position'))).get(survey=survey_db, position=num_question)
