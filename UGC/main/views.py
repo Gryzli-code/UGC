@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Prefetch
-from django.shortcuts import get_object_or_404
 from django.forms.models import model_to_dict
+from django.contrib.auth.decorators import login_required
+
 
 from .models import Survey, Question, Answer
 
 
+@login_required
 def get_question(request, id_survey, num_question):
     """
     Функция получения вопроса из опроса

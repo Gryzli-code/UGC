@@ -91,8 +91,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Модель для авторизации и регистрации
 AUTH_USER_MODEL = "user.CustomUser"
 
-# Internationalization
+# Настройки авторизации и регистрации
+LOGIN_URL = '/login/'
+# Можно настроить опционально, например, в личный кабинет или сразу к выбору опроса и тд.
+LOGIN_REDIRECT_URL = '/'
 
+
+# Internationalization
 LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
